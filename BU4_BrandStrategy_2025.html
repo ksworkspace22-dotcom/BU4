@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BU4 AUTO — Brand Strategy 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+:root{
+  --g:#6DC93A;
+  --g-dim:rgba(109,201,58,0.15);
+  --g-line:rgba(109,201,58,0.3);
+  --ink:#f4f1ec;
+  --ink-dim:#888;
+  --ink-ghost:#333;
+  --void:#050505;
+  --paper:#0c0c0c;
+  --rule:#1c1c1c;
+
+  /* Strategy 1 */
+  --s1:#E8D5B0;
+  --s1-acc:#C9A84C;
+  --s1-deep:#3D2B0A;
+
+  /* Strategy 2 */
+  --s2:#C8F0FF;
+  --s2-acc:#00BFFF;
+  --s2-deep:#001A2E;
+}
+
+body{
+  background:var(--void);
+  color:var(--ink);
+  font-family:'Rajdhani',sans-serif;
+  overflow-x:hidden;
+  cursor:crosshair;
+}
+
+/* ── CUSTOM CURSOR ── */
+.cursor{
+  width:8px;height:8px;
+  background:var(--g);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  z-index:9999;
+  transition:transform 0.1s,opacity 0.2s;
+  mix-blend-mode:difference;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 3rem;
+  background:rgba(5,5,5,0.88);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--rule);
+}
+.n-brand{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1.1rem;
+  letter-spacing:0.25em;color:var(--ink);
+}
+.n-brand span{color:var(--g)}
+.n-links{display:flex;gap:2.5rem;list-style:none}
+.n-links a{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.25em;
+  text-transform:uppercase;color:var(--ink-ghost);
+  text-decoration:none;transition:color 0.2s;
+}
+.n-links a:hover{color:var(--g)}
+.n-right{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;color:var(--ink-ghost);
+  letter-spacing:0.3em;text-transform:uppercase;
+}
+
+/* ── COVER ── */
+.cover{
+  min-height:100vh;
+  display:grid;
+  grid-template-rows:1fr auto;
+  position:relative;overflow:hidden;
+  background:#030303;
+}
+.cover-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 60%, rgba(109,201,58,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 30% at 80% 20%, rgba(109,201,58,0.02) 0%, transparent 60%);
+}
+.cover-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(109,201,58,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,201,58,0.03) 1px, transparent 1px);
+  background-size:80px 80px;
+}
+.cover-scanline{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.15) 3px,
+    rgba(0,0,0,0.15) 4px
+  );
+  pointer-events:none;
+}
+.cover-body{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;
+  align-items:flex-start;justify-content:center;
+  padding:12rem 3rem 4rem;
+  max-width:1400px;margin:0 auto;width:100%;
+}
+.c-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.5em;
+  text-transform:uppercase;color:var(--g);
+  margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.c-eyebrow::before{
+  content:'';width:40px;height:1px;background:var(--g);
+}
+.c-headline{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3rem,9vw,9rem);
+  font-weight:900;line-height:0.9;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin-bottom:1rem;
+}
+.c-headline em{
+  font-style:italic;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(244,241,236,0.3);
+}
+.c-headline .g{color:var(--g)}
+.c-sub{
+  font-size:1rem;font-weight:300;
+  color:var(--ink-dim);
+  max-width:500px;line-height:1.8;
+  margin-bottom:4rem;letter-spacing:0.02em;
+}
+.c-meta{
+  display:flex;gap:4rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--ink-ghost);
+}
+.c-meta span{color:var(--ink-dim)}
+
+.cover-footer{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:2rem 3rem;
+  border-top:1px solid var(--rule);
+  max-width:1400px;margin:0 auto;width:100%;
+}
+.c-scroll{
+  display:flex;align-items:center;gap:1rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--ink-ghost);
+}
+.scroll-bar{
+  width:60px;height:1px;
+  background:var(--rule);
+  position:relative;overflow:hidden;
+}
+.scroll-bar::after{
+  content:'';
+  position:absolute;top:0;left:0;
+  height:100%;width:40%;
+  background:var(--g);
+  animation:scrollBar 2s ease-in-out infinite;
+}
+@keyframes scrollBar{
+  0%{left:-40%;opacity:0}
+  20%{opacity:1}
+  80%{opacity:1}
+  100%{left:100%;opacity:0}
+}
+
+/* ── CHAPTER TITLES ── */
+.chapter{
+  padding:8rem 3rem 6rem;
+  max-width:1400px;margin:0 auto;
+}
+.ch-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.5em;
+  text-transform:uppercase;color:var(--g);
+  margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.ch-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.ch-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,4.5rem);
+  font-weight:700;line-height:1.05;
+  letter-spacing:-0.01em;color:var(--ink);
+  margin-bottom:1.5rem;
+}
+.ch-title em{font-style:italic;color:var(--g)}
+.ch-intro{
+  font-size:1rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.9;
+  max-width:720px;
+}
+
+/* ── FULL BLEED RULE ── */
+.rule-full{
+  width:100%;height:1px;
+  background:var(--rule);
+}
+
+/* ── STUDY GRID ── */
+.study-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  max-width:1400px;margin:0 auto 1px;
+}
+@media(max-width:800px){.study-grid{grid-template-columns:1fr}}
+
+.sg-cell{
+  background:var(--void);
+  padding:3rem;
+}
+.sg-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.3em;
+  color:var(--ink-ghost);margin-bottom:1.5rem;
+  display:block;
+}
+.sg-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;font-weight:700;
+  color:var(--ink);margin-bottom:1rem;
+}
+.sg-body{
+  font-size:0.9rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.9;
+}
+.sg-body strong{color:var(--ink);font-weight:600}
+
+/* ── INSIGHT BAND ── */
+.insight-band{
+  background:#080808;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:5rem 3rem;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.insight-band::before{
+  content:'INSIGHT';
+  position:absolute;
+  font-family:'Rajdhani',sans-serif;
+  font-size:20vw;font-weight:700;
+  color:rgba(109,201,58,0.02);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;white-space:nowrap;
+}
+.ib-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.ib-quote{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.4rem,3vw,2.5rem);
+  font-style:italic;
+  line-height:1.4;color:var(--ink);
+  margin-bottom:1.5rem;
+}
+.ib-attr{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.4em;
+  color:var(--ink-ghost);text-transform:uppercase;
+}
+
+/* ── BIKE ANALYSIS ── */
+.bike-study{
+  max-width:1400px;margin:0 auto;
+  padding:0 3rem 6rem;
+}
+.bike-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+}
+@media(max-width:900px){.bike-grid{grid-template-columns:1fr}}
+.bg-item{
+  background:var(--void);padding:2.5rem;
+}
+.bg-cat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  color:var(--g);text-transform:uppercase;
+  margin-bottom:1rem;
+}
+.bg-name{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1.1rem;
+  color:var(--ink);margin-bottom:0.75rem;
+  letter-spacing:0.05em;
+}
+.bg-desc{
+  font-size:0.85rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.bg-desc strong{color:var(--ink)}
+
+/* ── TENSION DIAGRAM ── */
+.tension{
+  max-width:1400px;margin:0 auto;
+  padding:0 3rem 6rem;
+}
+.tension-title{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.58rem;letter-spacing:0.4em;
+  text-transform:uppercase;color:var(--ink-ghost);
+  margin-bottom:3rem;
+  text-align:center;
+}
+.tension-diagram{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:2rem;
+  max-width:900px;margin:0 auto;
+}
+.tension-side{
+  padding:2.5rem;
+  border:1px solid var(--rule);
+  background:#070707;
+}
+.ts-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  color:var(--g);text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.ts-word{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;
+  color:var(--ink);margin-bottom:0.75rem;
+}
+.ts-list{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.9;
+}
+.tension-vs{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;font-style:italic;
+  color:var(--ink-ghost);
+  text-align:center;
+}
+.tension-resolve{
+  max-width:700px;margin:3rem auto 0;
+  padding:2rem 2.5rem;
+  border-left:3px solid var(--g);
+  background:rgba(109,201,58,0.03);
+}
+.tr-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  color:var(--g);text-transform:uppercase;
+  margin-bottom:0.75rem;
+}
+.tr-text{
+  font-size:0.95rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.9;
+}
+.tr-text strong{color:var(--ink)}
+
+/* ══════════════════════════════════════════════
+   STRATEGY CARDS
+══════════════════════════════════════════════ */
+
+/* Strategy wrapper */
+.strategy{
+  position:relative;
+  border-top:1px solid var(--rule);
+  overflow:hidden;
+}
+
+/* ─ S1 specific ─ */
+.s1-bg{background:#08060200}
+.s1-accent{color:var(--s1-acc)}
+.s1-line{background:var(--s1-acc)}
+.s1-border{border-color:rgba(201,168,76,0.2)}
+.s1-glow{box-shadow:0 0 30px rgba(201,168,76,0.1)}
+
+/* ─ S2 specific ─ */
+.s2-bg{background:#00060d00}
+.s2-accent{color:var(--s2-acc)}
+.s2-line{background:var(--s2-acc)}
+.s2-border{border-color:rgba(0,191,255,0.2)}
+.s2-glow{box-shadow:0 0 30px rgba(0,191,255,0.1)}
+
+/* Strategy hero band */
+.str-hero{
+  position:relative;overflow:hidden;
+  padding:6rem 3rem;
+  max-width:1400px;margin:0 auto;
+}
+.str-no{
+  position:absolute;
+  font-family:'Playfair Display',serif;
+  font-size:30vw;font-weight:900;
+  font-style:italic;
+  line-height:1;
+  top:50%;right:0;
+  transform:translate(10%,-50%);
+  pointer-events:none;
+  z-index:0;
+}
+.s1 .str-no{color:rgba(201,168,76,0.04)}
+.s2 .str-no{color:rgba(0,191,255,0.04)}
+
+.str-hero-content{position:relative;z-index:1}
+.str-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.5em;
+  text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.s1 .str-tag{color:var(--s1-acc)}
+.s2 .str-tag{color:var(--s2-acc)}
+.str-tag::before{content:'';width:30px;height:1px}
+.s1 .str-tag::before{background:var(--s1-acc)}
+.s2 .str-tag::before{background:var(--s2-acc)}
+
+.str-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,6vw,6rem);
+  font-weight:900;line-height:0.95;
+  letter-spacing:-0.02em;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.str-name em{font-style:italic}
+.str-line{
+  height:3px;
+  width:80px;
+  margin:1.5rem 0;
+}
+.str-philosophy{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2vw,1.3rem);
+  font-style:italic;font-weight:300;
+  color:var(--ink-dim);
+  max-width:600px;line-height:1.7;
+}
+
+/* Strategy body: full layout */
+.str-body{
+  max-width:1400px;margin:0 auto;
+  padding:0 3rem 6rem;
+}
+
+/* Two-col layout */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:1px;
+}
+@media(max-width:800px){.two-col{grid-template-columns:1fr}}
+
+.tc-panel{
+  background:var(--void);
+  padding:3rem;
+}
+.tc-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  text-transform:uppercase;
+  color:var(--ink-ghost);
+  margin-bottom:2rem;
+  display:flex;align-items:center;gap:1rem;
+}
+.tc-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.s1 .tc-label.accent{color:var(--s1-acc)}
+.s2 .tc-label.accent{color:var(--s2-acc)}
+
+/* Brand Narrative */
+.narrative{
+  font-size:0.92rem;font-weight:300;
+  color:var(--ink-dim);line-height:2;
+}
+.narrative strong{color:var(--ink);font-weight:600}
+.narrative em{
+  font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05em;
+}
+
+/* Pillars */
+.pillar{
+  padding:1.5rem;
+  border-left:2px solid;
+  margin-bottom:1rem;
+  background:rgba(255,255,255,0.01);
+}
+.s1 .pillar{border-color:rgba(201,168,76,0.3)}
+.s2 .pillar{border-color:rgba(0,191,255,0.3)}
+.p-title{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:0.9rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.s1 .p-title{color:var(--s1-acc)}
+.s2 .p-title{color:var(--s2-acc)}
+.p-body{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.p-body strong{color:var(--ink)}
+
+/* Archetype ring */
+.archetype-visual{
+  display:flex;align-items:center;gap:2rem;
+  padding:2rem;
+  border:1px solid var(--rule);
+  margin-bottom:1.5rem;
+  background:#070707;
+}
+.arc-ring{
+  width:80px;height:80px;
+  border-radius:50%;
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-style:italic;
+  font-weight:700;
+}
+.s1 .arc-ring{
+  border:2px solid var(--s1-acc);
+  color:var(--s1-acc);
+  background:rgba(201,168,76,0.05);
+}
+.s2 .arc-ring{
+  border:2px solid var(--s2-acc);
+  color:var(--s2-acc);
+  background:rgba(0,191,255,0.05);
+}
+.arc-text{}
+.arc-name{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1rem;
+  letter-spacing:0.1em;color:var(--ink);
+  margin-bottom:0.4rem;
+}
+.arc-desc{
+  font-size:0.8rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.7;
+}
+
+/* Voice spectrum */
+.voice-spectrum{
+  margin-bottom:1.5rem;
+}
+.vs-row{
+  display:flex;align-items:center;
+  gap:1rem;margin-bottom:0.75rem;
+}
+.vs-pole{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.2em;
+  color:var(--ink-ghost);width:80px;flex-shrink:0;
+  text-transform:uppercase;
+}
+.vs-track{
+  flex:1;height:3px;
+  background:var(--rule);
+  position:relative;border-radius:2px;
+}
+.vs-fill{
+  height:100%;border-radius:2px;
+  position:absolute;top:0;left:0;
+}
+.s1 .vs-fill{background:linear-gradient(90deg,transparent,var(--s1-acc))}
+.s2 .vs-fill{background:linear-gradient(90deg,transparent,var(--s2-acc))}
+.vs-pole.right{text-align:right}
+
+/* Tagline block */
+.tagline-block{
+  padding:2rem;border:1px solid var(--rule);
+  background:#060606;margin-bottom:1rem;
+  position:relative;overflow:hidden;
+}
+.tb-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.3em;
+  color:var(--ink-ghost);margin-bottom:0.75rem;
+  display:block;
+}
+.tb-line{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,2.5vw,1.5rem);
+  font-weight:700;line-height:1.3;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.tb-sub{
+  font-size:0.8rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.7;
+  font-style:italic;
+  font-family:'Cormorant Garamond',serif;
+}
+.tb-mechanic{
+  margin-top:0.75rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.2em;
+  color:var(--ink-ghost);
+  border-top:1px solid var(--rule);
+  padding-top:0.75rem;
+}
+
+/* ── COMMUNICATION FRAMEWORK ── */
+.comm-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:1px;
+}
+@media(max-width:900px){.comm-grid{grid-template-columns:repeat(2,1fr)}}
+.cg-item{
+  background:var(--void);padding:2rem;
+}
+.cg-icon{
+  font-size:1.8rem;margin-bottom:1rem;
+  display:block;
+}
+.cg-title{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:0.85rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.cg-body{
+  font-size:0.78rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.cg-body strong{color:var(--ink)}
+
+/* ── BIKE CMF APPLICATION ── */
+.cmf-app{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:1px;
+}
+@media(max-width:900px){.cmf-app{grid-template-columns:1fr}}
+.ca-item{background:var(--void);padding:2.5rem}
+.ca-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  text-transform:uppercase;margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.s1 .ca-label{color:var(--s1-acc)}
+.s2 .ca-label{color:var(--s2-acc)}
+.ca-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+.ca-title{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1rem;
+  letter-spacing:0.05em;color:var(--ink);
+  margin-bottom:0.75rem;
+}
+.ca-body{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.85;
+}
+.ca-body strong{color:var(--ink)}
+
+/* Colour swatches inline */
+.swatch-row{
+  display:flex;gap:0.6rem;margin:1rem 0;
+  align-items:stretch;
+}
+.sw{
+  height:36px;border-radius:2px;
+  flex:1;position:relative;
+  cursor:help;
+}
+.sw-tip{
+  position:absolute;bottom:calc(100% + 6px);left:50%;
+  transform:translateX(-50%);
+  background:#111;border:1px solid var(--rule);
+  padding:0.3rem 0.6rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.15em;
+  color:var(--ink-dim);white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity 0.2s;
+  z-index:10;
+}
+.sw:hover .sw-tip{opacity:1}
+
+/* ── TOUCHPOINT MAP ── */
+.touchpoint-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:1px;
+}
+@media(max-width:700px){.touchpoint-grid{grid-template-columns:1fr}}
+.tp-item{
+  background:var(--void);
+  padding:2.5rem;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:1.5rem;align-items:start;
+}
+.tp-num{
+  font-family:'Playfair Display',serif;
+  font-size:3.5rem;font-weight:900;font-style:italic;
+  line-height:1;
+}
+.s1 .tp-num{color:rgba(201,168,76,0.15)}
+.s2 .tp-num{color:rgba(0,191,255,0.1)}
+.tp-content{}
+.tp-title{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:0.9rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--ink);margin-bottom:0.5rem;
+}
+.tp-body{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.tp-body strong{color:var(--ink)}
+
+/* ── LAUNCH TIMELINE ── */
+.timeline{
+  position:relative;
+  padding:0 3rem 6rem;
+  max-width:1400px;margin:0 auto;
+}
+.tl-track{
+  position:relative;
+  padding-left:2.5rem;
+  border-left:1px solid var(--rule);
+}
+.tl-item{
+  position:relative;
+  margin-bottom:3rem;
+  padding-left:2rem;
+}
+.tl-item::before{
+  content:'';
+  position:absolute;
+  left:-2.6rem;top:0.6rem;
+  width:10px;height:10px;
+  border-radius:50%;
+  border:1px solid;
+}
+.s1 .tl-item::before{
+  background:rgba(201,168,76,0.2);
+  border-color:var(--s1-acc);
+}
+.s2 .tl-item::before{
+  background:rgba(0,191,255,0.15);
+  border-color:var(--s2-acc);
+}
+.tl-phase{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.4em;
+  text-transform:uppercase;margin-bottom:0.5rem;
+}
+.s1 .tl-phase{color:var(--s1-acc)}
+.s2 .tl-phase{color:var(--s2-acc)}
+.tl-name{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1.05rem;
+  letter-spacing:0.05em;color:var(--ink);
+  margin-bottom:0.5rem;
+}
+.tl-desc{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.tl-desc strong{color:var(--ink)}
+
+/* ── COMPARISON TABLE ── */
+.compare{
+  max-width:1400px;margin:0 auto;
+  padding:0 3rem 8rem;
+}
+.comp-table{
+  width:100%;
+  border-collapse:collapse;
+  border:1px solid var(--rule);
+}
+.comp-table th{
+  padding:1.5rem 2rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.3em;
+  text-transform:uppercase;
+  text-align:left;
+  border-bottom:1px solid var(--rule);
+  background:#080808;
+}
+.comp-table th.h-s1{color:var(--s1-acc)}
+.comp-table th.h-s2{color:var(--s2-acc)}
+.comp-table th.h-dim{color:var(--ink-ghost)}
+.comp-table td{
+  padding:1.25rem 2rem;
+  font-size:0.85rem;font-weight:300;
+  color:var(--ink-dim);
+  border-bottom:1px solid #0e0e0e;
+  vertical-align:top;line-height:1.7;
+}
+.comp-table td strong{color:var(--ink);font-weight:600}
+.comp-table tr:last-child td{border-bottom:none}
+.comp-table tr:hover td{background:rgba(255,255,255,0.01)}
+.comp-table td.cat{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--ink-ghost);
+}
+
+/* ── FINAL RECOMMENDATION ── */
+.rec{
+  background:#060606;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:8rem 3rem;
+  position:relative;overflow:hidden;
+}
+.rec::before{
+  content:'';
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 50% 60% at 50% 50%, rgba(109,201,58,0.04), transparent);
+}
+.rec-inner{
+  max-width:1000px;margin:0 auto;
+  position:relative;z-index:1;
+  text-align:center;
+}
+.rec-label{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.5em;
+  text-transform:uppercase;color:var(--g);
+  margin-bottom:2rem;
+}
+.rec-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,4vw,3.5rem);
+  font-weight:900;line-height:1.1;
+  color:var(--ink);margin-bottom:2rem;
+}
+.rec-title em{font-style:italic;color:var(--g)}
+.rec-body{
+  font-size:0.95rem;font-weight:300;
+  color:var(--ink-dim);line-height:2;
+  max-width:800px;margin:0 auto 3rem;
+}
+.rec-body strong{color:var(--ink)}
+.rec-formula{
+  display:inline-flex;align-items:center;gap:1.5rem;
+  padding:1.5rem 3rem;
+  border:1px solid var(--rule);
+  background:var(--void);
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+}
+.rf-item{}
+.rf-plus{color:var(--ink-ghost)}
+.rf-1{color:var(--s1-acc)}
+.rf-2{color:var(--s2-acc)}
+
+/* ── FOOTER ── */
+footer{
+  padding:5rem 3rem;
+  border-top:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
+  max-width:1400px;margin:0 auto;
+}
+.ft-logo{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:1.5rem;
+  letter-spacing:0.2em;color:var(--ink-ghost);
+}
+.ft-logo span{color:var(--g)}
+.ft-copy{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.2em;
+  color:var(--ink-ghost);line-height:1.8;
+  text-align:right;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.fade-in{
+  opacity:0;animation:fadeUp 0.7s ease forwards;
+}
+
+/* Grain overlay */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:9000;
+  opacity:0.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px 200px;
+}
+
+/* Bike visual box */
+.bike-visual{
+  width:100%;
+  aspect-ratio:16/7;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%),
+    #050505;
+  border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  margin-bottom:1px;
+}
+.bv-label{
+  position:absolute;bottom:1rem;left:1.5rem;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.3em;
+  color:var(--ink-ghost);text-transform:uppercase;
+}
+.bv-center{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1rem,3vw,2rem);
+  font-style:italic;color:rgba(255,255,255,0.05);
+}
+
+/* Loud/subtle grid */
+.ls-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--rule);
+  border:1px solid var(--rule);
+  margin-bottom:1px;
+}
+@media(max-width:700px){.ls-grid{grid-template-columns:1fr}}
+.ls-item{background:var(--void);padding:3rem}
+.ls-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.5em;
+  color:var(--ink-ghost);text-transform:uppercase;
+  margin-bottom:1.5rem;
+}
+.ls-big{
+  font-family:'Playfair Display',serif;
+  font-size:3.5rem;font-weight:900;
+  line-height:1;margin-bottom:1rem;
+}
+.s1 .ls-big{color:var(--s1-acc)}
+.s2 .ls-big{color:var(--s2-acc)}
+.ls-body{
+  font-size:0.85rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.9;
+}
+.ls-body strong{color:var(--ink)}
+
+/* Full width text band */
+.text-band{
+  padding:6rem 3rem;
+  max-width:1400px;margin:0 auto;
+}
+.tb-cols{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:6rem;align-items:start;
+}
+@media(max-width:800px){.tb-cols{grid-template-columns:1fr;gap:3rem}}
+.tbc-left{}
+.tbc-right{}
+
+/* Numbered list */
+.n-list{
+  display:flex;flex-direction:column;gap:1.5rem;
+}
+.nl-item{
+  display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;
+  align-items:start;
+}
+.nl-n{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;font-weight:900;font-style:italic;
+  line-height:1;
+}
+.s1 .nl-n{color:rgba(201,168,76,0.25)}
+.s2 .nl-n{color:rgba(0,191,255,0.15)}
+.nl-content{}
+.nl-title{
+  font-family:'Rajdhani',sans-serif;
+  font-weight:700;font-size:0.9rem;
+  letter-spacing:0.05em;color:var(--ink);
+  margin-bottom:0.4rem;
+}
+.nl-desc{
+  font-size:0.82rem;font-weight:300;
+  color:var(--ink-dim);line-height:1.8;
+}
+.nl-desc strong{color:var(--ink)}
+
+/* ── section separator ── */
+.sep{
+  max-width:1400px;margin:6rem auto;
+  padding:0 3rem;
+  display:flex;align-items:center;gap:2rem;
+}
+.sep-line{flex:1;height:1px;background:var(--rule)}
+.sep-text{
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.55rem;letter-spacing:0.5em;
+  color:var(--ink-ghost);text-transform:uppercase;
+  white-space:nowrap;
+}
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- ───── NAV ───── -->
+<nav>
+  <div class="n-brand">BU<span>4</span> AUTO</div>
+  <ul class="n-links">
+    <li><a href="#study">Brand Study</a></li>
+    <li><a href="#s1">Strategy I</a></li>
+    <li><a href="#s2">Strategy II</a></li>
+    <li><a href="#rec">Recommendation</a></li>
+  </ul>
+  <div class="n-right">CONFIDENTIAL · 2025</div>
+</nav>
+
+<!-- ───── COVER ───── -->
+<section class="cover">
+  <div class="cover-bg"></div>
+  <div class="cover-lines"></div>
+  <div class="cover-scanline"></div>
+
+  <div class="cover-body">
+    <div class="c-eyebrow">Brand Strategy Document · BU4 Auto · India Launch</div>
+    <h1 class="c-headline">
+      THE ART<br>
+      OF BEING<br>
+      <em>LOUD</em><br>
+      <span class="g">QUIETLY.</span>
+    </h1>
+    <p class="c-sub">A comprehensive brand strategy for BU4 Auto's electric motorcycle launch — 
+    crafted to simultaneously command attention and reward those who look closer.</p>
+    <div class="c-meta">
+      <div>MARKET<br><span>India — GenZ + Millennial</span></div>
+      <div>CATEGORY<br><span>Electric Two-Wheeler</span></div>
+      <div>PROPOSALS<br><span>2 Complete Strategies</span></div>
+      <div>DOCUMENT<br><span>Brand + CMF + Launch</span></div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="c-scroll">
+      <div class="scroll-bar"></div>
+      Scroll to read
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:0.55rem;color:var(--ink-ghost);letter-spacing:0.3em">
+      PREPARED BY BRAND STRATEGY OFFICE
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+   PART 0: THE BRIEF — UNDERSTANDING THE PARADOX
+════════════════════════════════════════ -->
+<div id="study">
+<div class="chapter">
+  <div class="ch-label">Part One · The Foundation</div>
+  <h2 class="ch-title">Understanding<br>the <em>Paradox.</em></h2>
+  <p class="ch-intro">
+    The brief contains two words that most brands consider opposites: <strong>loud</strong> and <strong>subtle</strong>. 
+    Most brands choose one and apologise for the other. 
+    The greatest brands in history have weaponised the tension between them. 
+    Before we propose strategy, we must understand why this paradox is actually BU4's biggest advantage.
+  </p>
+</div>
+
+<div class="tension" style="padding-top:0">
+  <p class="tension-title">THE CORE CREATIVE TENSION</p>
+  <div class="tension-diagram">
+    <div class="tension-side">
+      <div class="ts-label">The Demand</div>
+      <div class="ts-word">LOUD</div>
+      <p class="ts-list">
+        Command attention<br>
+        Disrupt the feed<br>
+        Make it undeniable<br>
+        Be impossible to ignore<br>
+        Energy that hits first
+      </p>
+    </div>
+    <div class="tension-vs">×</div>
+    <div class="tension-side">
+      <div class="ts-label">The Desire</div>
+      <div class="ts-word">SUBTLE</div>
+      <p class="ts-list">
+        Reward the curious<br>
+        Respect intelligence<br>
+        Let it breathe<br>
+        Trust the audience<br>
+        Details that whisper
+      </p>
+    </div>
+  </div>
+  <div class="tension-resolve">
+    <div class="tr-label">The Resolution</div>
+    <p class="tr-text">
+      This is not a contradiction. This is a <strong>two-frequency broadcast</strong>. 
+      The brand must operate simultaneously at two registers: 
+      the first impression that stops the scroll, and the second layer that stops the person. 
+      <strong>First glance = loud. Second glance = subtle. Third glance = obsession.</strong>
+      The brands that achieve this — Supreme, Arc'teryx, Apple, Royal Enfield in its prime — 
+      create the most fanatical communities on earth. BU4 must join them.
+    </p>
+  </div>
+</div>
+
+<!-- ── MARKET STUDY ── -->
+<div class="chapter" style="padding-bottom:2rem">
+  <div class="ch-label">Market Intelligence</div>
+  <h2 class="ch-title">Who Are We<br>Really <em>Talking To?</em></h2>
+  <p class="ch-intro">
+    GenZ and Millennials in India are not a demographic. They are a cultural force 
+    with contradictory, sophisticated desires. Understanding them in 2025 means 
+    abandoning every assumption made about them in 2020.
+  </p>
+</div>
+
+<div class="study-grid" style="padding:0 0 0 0;max-width:none;border-left:none;border-right:none">
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 01</span>
+    <div class="sg-title">The Post-Aspiration Generation</div>
+    <p class="sg-body">
+      Indian youth in 2025 has moved beyond simple aspiration. They've seen the "good life" 
+      advertised at them their entire lives — and many have either achieved it or decided 
+      to redefine it. <strong>They don't want to be sold a dream. They want to be understood.</strong>
+      <br><br>
+      A 24-year-old in Pune has a Netflix account, wears New Balance, orders from Zomato at midnight, 
+      and listens to Anuv Jain and Bladee on the same playlist. Their taste 
+      <strong>doesn't follow rules.</strong> Their brand choices signal identity, not just status.
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 02</span>
+    <div class="sg-title">The Authenticity Paradox</div>
+    <p class="sg-body">
+      They can identify performative authenticity from a mile away. 
+      The moment a brand <em>tries to look organic</em>, it reads as corporate. 
+      Yet they will enthusiastically buy from brands that are 
+      <strong>openly, confidently themselves</strong> — even if that self is manufactured.
+      <br><br>
+      Apple is not authentic. It is <strong>consistent</strong>. Supreme is not authentic. 
+      It is <strong>committed</strong>. The distinction matters enormously. 
+      BU4 doesn't need to be raw — it needs to be <strong>unwavering in its identity</strong>.
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 03</span>
+    <div class="sg-title">Electric Without the Lecture</div>
+    <p class="sg-body">
+      Indian youth are environmentally aware but environmentally exhausted. 
+      They've been lectured about sustainability their entire adult lives. 
+      <strong>A brand that leads with "electric = green" will be ignored.</strong>
+      <br><br>
+      However, a brand that leads with "electric = performance, silence, superiority" 
+      — and lets the environmental benefit be an implicit bonus — 
+      will be deeply respected. The bike's silence is not a limitation. 
+      <strong>It is an aesthetic quality, like a matte finish or a typeface choice.</strong>
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 04</span>
+    <div class="sg-title">The Bike as Wearable Object</div>
+    <p class="sg-body">
+      For this generation, a motorcycle is not transport. It is a 
+      <strong>daily wearable at 1:1 scale</strong>. Every decision about it 
+      — the colour, the sound, the logo placement, the riding posture — 
+      is a statement about who they are and who they want to become.
+      <br><br>
+      This means <strong>every surface of the BU4 bike is a branding decision</strong>. 
+      The handlebar grips. The DRL shape. The bolt on the engine casing. 
+      The font on the speedometer. There is no "unbranded" part of this motorcycle.
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 05</span>
+    <div class="sg-title">The Community-First Economy</div>
+    <p class="sg-body">
+      GenZ doesn't discover brands through ads. They discover brands through 
+      <strong>people they trust</strong> — creators, friends, comment sections, 
+      in-person sightings. This means BU4's first 500 customers are 
+      not sales targets. <strong>They are the marketing department.</strong>
+      <br><br>
+      The brand must be designed to be shared, talked about, photographed. 
+      It must give its owners something to say — a story, a detail, 
+      an opinion that makes them feel like insiders. Community 
+      is not a campaign. <strong>Community is the product.</strong>
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">INSIGHT 06</span>
+    <div class="sg-title">The Two-Speed India</div>
+    <p class="sg-body">
+      Metro India and non-metro India are culturally distinct audiences 
+      who share more than brands assume. A 23-year-old in Coimbatore has 
+      the same Instagram algorithm as one in Mumbai. The <strong>aspiration is identical; 
+      the context is different.</strong>
+      <br><br>
+      The winning brand in this category will be legible in both contexts — 
+      not by dumbing down for smaller cities, but by being 
+      <strong>universally human about things that are universally felt</strong>: 
+      freedom, identity, the desire to move on your own terms.
+    </p>
+  </div>
+</div>
+
+<!-- ── COMPETITIVE LANDSCAPE ── -->
+<div class="chapter" style="padding-bottom:2rem">
+  <div class="ch-label">Competitive Territory</div>
+  <h2 class="ch-title">The White<br><em>Space.</em></h2>
+  <p class="ch-intro">
+    To find where BU4 should live, we must map where everyone else already is — 
+    and more importantly, what vast territories they've abandoned.
+  </p>
+</div>
+
+<div class="study-grid" style="max-width:none">
+  <div class="sg-cell">
+    <span class="sg-num">ATHER ENERGY</span>
+    <div class="sg-title">The Rational Premium</div>
+    <p class="sg-body">
+      Owns the "smart tech premium" space. Their audience: educated, urban, 
+      analytical. Their brand language is clean, almost clinical — 
+      designed to make engineers comfortable. <strong>Gap: zero emotional resonance. 
+      Nobody is passionate about Ather in the way people are passionate about their 
+      favourite sneaker brand.</strong>
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">OLA ELECTRIC</span>
+    <div class="sg-title">The Loud Disruptor</div>
+    <p class="sg-body">
+      Owns volume, price, and noise. Their brand is pure ambition — 
+      "India's electric future" positioning. <strong>Gap: trusted by almost nobody. 
+      The aggressive "we will win" energy without the product quality to back it 
+      creates a brand that feels like a bluff.</strong> Cultural baggage 
+      makes differentiation easy for any competitor.
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">ROYAL ENFIELD</span>
+    <div class="sg-title">The Heritage Keeper</div>
+    <p class="sg-body">
+      The most emotionally resonant brand in Indian motorcycling. 
+      They own: community, heritage, the romance of the road. 
+      <strong>Gap: allergic to the future. Their customer base is ageing. 
+      They have zero credibility with GenZ who finds 
+      the "thump culture" identity too exclusionary and too masculine-coded.</strong>
+    </p>
+  </div>
+  <div class="sg-cell">
+    <span class="sg-num">ULTRAVIOLETTE</span>
+    <div class="sg-title">The Performance Niche</div>
+    <p class="sg-body">
+      Positioned for serious performance riders. Credible product, 
+      underwhelming brand presence. <strong>Gap: speaks only to a narrow audience 
+      of performance-focused buyers. The brand is fluent in engineering 
+      but barely conversational in culture.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="insight-band">
+  <div class="ib-inner">
+    <p class="ib-quote">"Every major player in Indian electric motorcycling owns 
+    either reason <em>or</em> emotion. 
+    The brand that masters both simultaneously 
+    — that is loud in soul and subtle in execution — 
+    owns the entire category."</p>
+    <p class="ib-attr">Strategic White Space Identification · BU4 Auto</p>
+  </div>
+</div>
+
+<!-- ── BIKE READING ── -->
+<div class="chapter" style="padding-bottom:2rem">
+  <div class="ch-label">Design Intelligence · The Product</div>
+  <h2 class="ch-title">Reading the<br><em>Machine.</em></h2>
+  <p class="ch-intro">
+    Before brand strategy is written, the product must be read as a cultural object. 
+    Every angle, proportion, and surface decision the designer made is a story. 
+    The brand must amplify what is already there.
+  </p>
+</div>
+
+<div class="bike-study">
+  <div class="bike-grid">
+    <div class="bg-item">
+      <div class="bg-cat">Silhouette Language</div>
+      <div class="bg-name">The Aggressive Crouch</div>
+      <p class="bg-desc">
+        From the side profile, this bike has a <strong>forward-biased weight distribution</strong> — 
+        the tank sits high and forward, the seat dips into a sharp V, 
+        and the tail unit rises aggressively. This is the posture of 
+        <strong>a predator about to spring</strong>, not a commuter at rest. 
+        It communicates intent before the rider even mounts.
+        <br><br>
+        Brand implication: <em>This bike cannot be branded with passive, 
+        calm language. The silhouette demands velocity even in stillness.</em>
+      </p>
+    </div>
+    <div class="bg-item">
+      <div class="bg-cat">Body Panel Geometry</div>
+      <div class="bg-name">Faceted Angularity</div>
+      <p class="bg-desc">
+        The body panels are deliberately <strong>multi-planar and faceted</strong> — 
+        not the smooth organic curves of a Japanese sports bike, 
+        but sharp, angular forms that create dramatic light-and-shadow 
+        contrast across the body. The side fairings have 
+        triangular cutouts and vent forms that echo industrial design 
+        more than automotive design.
+        <br><br>
+        Brand implication: <em>The CMF system must honour these angles. 
+        Colour blocking should follow the panel breaks, not fight them. 
+        This bike wants contrast and edge.</em>
+      </p>
+    </div>
+    <div class="bg-item">
+      <div class="bg-cat">Front Architecture</div>
+      <div class="bg-name">The Exposed Inverted Fork</div>
+      <p class="bg-desc">
+        The front end features <strong>prominent inverted telescopic forks</strong> 
+        with significant visual mass — paired with a compact, 
+        aggressive headlight unit that sits deliberately low. 
+        The overall front view reads as <strong>wide-shouldered and planted</strong>. 
+        There is no fairing to hide the mechanical soul.
+        <br><br>
+        Brand implication: <em>This is a naked bike. It has nothing to hide. 
+        The brand strategy should mirror this: transparent, 
+        confident, showing its working.</em>
+      </p>
+    </div>
+    <div class="bg-item">
+      <div class="bg-cat">Rear Architecture</div>
+      <div class="bg-name">The Upswept Exit</div>
+      <p class="bg-desc">
+        The rear profile is particularly striking: a sharp upswept tail section, 
+        a large rear wheel with wide stance, and the absence of a traditional 
+        exhaust creates a <strong>clean, almost architectural rear view</strong>. 
+        The licence plate bracket and rear lights integrate tightly. 
+        Viewed from behind, the bike reads as a geometric form, not a machine.
+        <br><br>
+        Brand implication: <em>Electric has given this bike a rear end 
+        more beautiful than any exhaust could be. The brand should 
+        make this silence its loudest statement.</em>
+      </p>
+    </div>
+    <div class="bg-item">
+      <div class="bg-cat">Battery Form Language</div>
+      <div class="bg-name">Architectural Engine Bay</div>
+      <p class="bg-desc">
+        The battery/motor unit is designed to be <strong>architecturally visible</strong> — 
+        not hidden but integrated as a visual element. 
+        The geometric forms of the battery casing echo the 
+        angular panel language of the bodywork. 
+        This is a <strong>conscious design statement: the power source 
+        is not a secret</strong>, it is a centrepiece.
+        <br><br>
+        Brand implication: <em>Lead with the electric heart visually. 
+        The brand should treat the battery unit like other brands 
+        treat an engine — as something to be proud of and visible.</em>
+      </p>
+    </div>
+    <div class="bg-item">
+      <div class="bg-cat">Proportional Character</div>
+      <div class="bg-name">The Muscular Compactness</div>
+      <p class="bg-desc">
+        Despite being a full-size motorcycle, the proportions create 
+        a sense of <strong>dense, compressed energy</strong> — 
+        like a sprinter, not a marathon runner. 
+        The wheelbase appears tight, the components close-packed. 
+        Every element is present, nothing is decorative. 
+        <strong>This is a bike that communicates performance 
+        through restraint of form.</strong>
+        <br><br>
+        Brand implication: <em>The subtlety axis of this brand 
+        is already built into the product design. 
+        The brand just needs to honour it.</em>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── LOUD / SUBTLE FRAMEWORK ── -->
+<div class="chapter" style="padding-bottom:2rem">
+  <div class="ch-label">Strategic Framework</div>
+  <h2 class="ch-title">How Loud Meets<br><em>Subtle.</em></h2>
+  <p class="ch-intro">
+    The two-frequency model. Every brand decision operates at one of these two registers — 
+    and the best decisions operate at both simultaneously.
+  </p>
+</div>
+
+<div style="max-width:1400px;margin:0 auto;padding:0 3rem 6rem">
+  <div class="ls-grid">
+    <div class="ls-item">
+      <div class="ls-head">FREQUENCY ONE</div>
+      <div class="ls-big" style="color:var(--g)">LOUD</div>
+      <p class="ls-body">
+        The first signal. What hits before the person decides to look. 
+        This operates in the <strong>emotional, peripheral, instinctive</strong> zone. 
+        It doesn't require thought — it requires only presence.
+        <br><br>
+        For BU4, this means: <strong>a silhouette that reads from 50 metres, 
+        a DRL that is unmistakeable at night, a colour that owns its mood, 
+        a name that is impossible to mispronounce.</strong> The logo bolt. 
+        The brand green. The aggressive geometry of the bike itself.
+        <br><br>
+        Loud is not about volume. It is about <em>unavoidability</em>.
+      </p>
+    </div>
+    <div class="ls-item">
+      <div class="ls-head">FREQUENCY TWO</div>
+      <div class="ls-big" style="color:var(--ink-dim)">SUBTLE</div>
+      <p class="ls-body">
+        The second signal. What reveals itself to those who look closer. 
+        This operates in the <strong>intellectual, intimate, rewarding</strong> zone. 
+        It requires intention. It cannot be seen from 50 metres.
+        <br><br>
+        For BU4, this means: <strong>a debossed pattern on the tank panel, 
+        a custom typeface that rewards examination, 
+        a seat stitch detail only the rider knows, 
+        copy that doesn't explain its own reference, 
+        a startup chime that is musical rather than mechanical.</strong>
+        <br><br>
+        Subtle is not about quietness. It is about <em>intimacy</em>.
+      </p>
+    </div>
+  </div>
+</div>
+</div><!-- end study -->
+
+
+<!-- ═══════════════════════════════════════
+   STRATEGY I: KINETIC GOLD
+════════════════════════════════════════ -->
+<div id="s1" class="strategy s1">
+
+<div class="str-hero">
+  <div class="str-no">I</div>
+  <div class="str-hero-content">
+    <div class="str-tag">Brand Strategy · Option One</div>
+    <div class="str-name">KINETIC<br><em>GOLD</em></div>
+    <div class="str-line s1-line"></div>
+    <p class="str-philosophy">
+      "The restraint of luxury. The hunger of ambition. 
+      The first Indian electric motorcycle that feels 
+      like it was inevitable — not engineered."
+    </p>
+  </div>
+</div>
+
+<div class="str-body">
+
+  <!-- CORE IDEA -->
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">The Central Idea</div>
+      <p class="narrative">
+        <strong>KINETIC GOLD</strong> positions BU4 Auto at the intersection of 
+        <em>restrained luxury and kinetic energy</em> — a space currently occupied by 
+        nobody in the Indian electric two-wheeler market.
+        <br><br>
+        The strategic premise: <strong>gold is the colour of achievement, 
+        not decoration</strong>. Not the gold of flashy jewellery or ostentatious wealth — 
+        the gold of a medal earned, of light at 6am, of 
+        <em>the last second before something accelerates</em>. 
+        This gold doesn't shout. It simply cannot be missed.
+        <br><br>
+        The brand is built around a single psychological truth about the 
+        Indian GenZ/Millennial audience: <strong>they have abandoned the idea 
+        that they need to prove themselves to anybody — 
+        but they haven't abandoned the desire to be extraordinary</strong>. 
+        They are post-aspirational and yet deeply ambitious. 
+        Kinetic Gold speaks directly to that tension.
+        <br><br>
+        Loudness: <strong>the gold CMF, the confident typography, 
+        the bold geometry of the logo applied to the bike</strong>.<br>
+        Subtlety: <strong>the restraint of a limited colour palette, 
+        the almost-whispered taglines, the details that require closeness</strong>.
+      </p>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Pillars</div>
+      <div class="pillar">
+        <div class="p-title">01 — Controlled Power</div>
+        <p class="p-body">
+          The most powerful thing BU4 makes is not the motor's torque — 
+          it is the <strong>restraint with which the brand communicates</strong>. 
+          Never overselling. Never begging for attention. 
+          Power that is assumed, not announced.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">02 — Material Honesty</div>
+        <p class="p-body">
+          Every surface decision communicates <strong>earned quality</strong>. 
+          Nothing is decorative for decoration's sake. 
+          The gold accent exists because it means something. 
+          The matte finish exists because gloss would be too easy. 
+          Materials chosen for what they communicate, not what they cost.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">03 — Cultural Fluency</div>
+        <p class="p-body">
+          The brand speaks the language of the <strong>new Indian achiever</strong> — 
+          someone who is equally comfortable with Hindustani classical and 
+          lo-fi hip-hop, with traditional gold thread and matte-finish sneakers. 
+          Culturally hybrid. Aesthetically sovereign. Never trying to be Western. 
+          Never being nostalgically Indian.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">04 — The Private Club Energy</div>
+        <p class="p-body">
+          The brand never explains itself to those who don't understand it. 
+          <strong>Understanding BU4 Kinetic Gold is the reward 
+          for being the kind of person who looks closely at things.</strong> 
+          This creates an aspirational in-group — 
+          not exclusive by price, but by perception.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHETYPE + VOICE -->
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Archetype</div>
+      <div class="archetype-visual">
+        <div class="arc-ring">Rx</div>
+        <div class="arc-text">
+          <div class="arc-name">THE RULER × THE CREATOR</div>
+          <p class="arc-desc">
+            The Ruler commands respect through quality and consistency. 
+            The Creator expresses originality and vision. Together: 
+            a brand that builds with mastery and communicates with artistry. 
+            Aspirational without being inaccessible. 
+            <strong style="color:var(--ink)">Confident enough to whisper.</strong>
+          </p>
+        </div>
+      </div>
+      <div class="tc-label accent" style="margin-top:1.5rem">Voice Spectrum</div>
+      <div class="voice-spectrum">
+        <div class="vs-row">
+          <span class="vs-pole">Aggressive</span>
+          <div class="vs-track"><div class="vs-fill" style="width:25%"></div></div>
+          <span class="vs-pole right">Controlled</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Mass Market</span>
+          <div class="vs-track"><div class="vs-fill" style="width:70%"></div></div>
+          <span class="vs-pole right">Selective</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Casual</span>
+          <div class="vs-track"><div class="vs-fill" style="width:65%"></div></div>
+          <span class="vs-pole right">Considered</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Western ref.</span>
+          <div class="vs-track"><div class="vs-fill" style="width:40%"></div></div>
+          <span class="vs-pole right">Indian identity</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Loud visual</span>
+          <div class="vs-track"><div class="vs-fill" style="width:55%"></div></div>
+          <span class="vs-pole right">Quiet visual</span>
+        </div>
+      </div>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Voice — Rules</div>
+      <div class="n-list">
+        <div class="nl-item">
+          <span class="nl-n">1</span>
+          <div class="nl-content">
+            <div class="nl-title">Never Sell. Demonstrate.</div>
+            <p class="nl-desc">Copy never says "buy now" or "limited time." It demonstrates a worldview. The product is evidence of a philosophy, not the object being sold. <strong>Let the reader arrive at desire on their own.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">2</span>
+          <div class="nl-content">
+            <div class="nl-title">Short Where Others Are Long</div>
+            <p class="nl-desc">Taglines are 3–6 words. Body copy maxes at 40 words. Every word cut is a word that adds weight to the ones remaining. <strong>Restraint is the brand's primary creative muscle.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">3</span>
+          <div class="nl-content">
+            <div class="nl-title">Gold as Vocabulary, Not Decoration</div>
+            <p class="nl-desc">When gold appears — in CMF, in typography highlight, in DRL — it is always <strong>earned by the element it touches.</strong> It marks what matters. Used sparingly, it becomes a signal that cannot be manufactured by any competitor.</p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">4</span>
+          <div class="nl-content">
+            <div class="nl-title">The Camera Finds the Details</div>
+            <p class="nl-desc">Visual communication prioritises close-up material details over wide-angle lifestyle. <strong>A macro shot of the gold DRL strip against matte black is louder than any landscape.</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAGLINES -->
+  <div class="two-col">
+    <div class="tc-panel" style="grid-column:1/-1">
+      <div class="tc-label accent">Campaign Taglines — The Kinetic Gold Register</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)">
+
+        <div class="tagline-block" style="background:#07060200">
+          <span class="tb-num">MASTER TAGLINE</span>
+          <div class="tb-line">CHARGED SILENCE.</div>
+          <p class="tb-sub">A motorcycle that makes its statement before it moves. 
+          Electric silence as the ultimate expression of confidence — 
+          the kind of quiet that makes noise when it arrives.</p>
+          <div class="tb-mechanic">APPLICATION → Billboard, product reveal, brand identity anchor</div>
+        </div>
+
+        <div class="tagline-block" style="background:#07060200">
+          <span class="tb-num">PRODUCT LINE</span>
+          <div class="tb-line">EVERY GRAM. CONSIDERED.</div>
+          <p class="tb-sub">Speaks to the material and engineering precision of the bike — 
+          echoes the CMF philosophy. Nothing is accidental. 
+          Resonates with the quality-conscious millennial.</p>
+          <div class="tb-mechanic">APPLICATION → Product page, specification advertising, showroom</div>
+        </div>
+
+        <div class="tagline-block" style="background:#07060200">
+          <span class="tb-num">LAUNCH CAMPAIGN</span>
+          <div class="tb-line">INDIA DOESN'T WAIT ANYMORE.</div>
+          <p class="tb-sub">Cultural pride without flag-waving. A statement about 
+          the country's velocity — and BU4's place at its front. 
+          Loud in meaning, measured in delivery.</p>
+          <div class="tb-mechanic">APPLICATION → Launch film, OOH, digital campaign</div>
+        </div>
+
+        <div class="tagline-block" style="background:#07060200">
+          <span class="tb-num">COMMUNITY LINE</span>
+          <div class="tb-line">YOU'LL KNOW WHEN YOU SEE IT.</div>
+          <p class="tb-sub">The most subtle of all — speaks to the in-group directly. 
+          Those who understand the brand immediately understand this line. 
+          Those who don't will be curious enough to investigate.</p>
+          <div class="tb-mechanic">APPLICATION → Social media, owner community, merchandise</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CMF APPLICATION -->
+  <div class="tc-label accent" style="padding:2rem 0 1rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--s1-acc)">
+    ── CMF SYSTEM · KINETIC GOLD APPLICATION TO THE BU4 BIKE ──
+  </div>
+
+  <div class="cmf-app">
+    <div class="ca-item">
+      <div class="ca-label">Colour System</div>
+      <div class="ca-title">The Gold + Void Architecture</div>
+      <div class="swatch-row">
+        <div class="sw" style="background:#1A1612"><div class="sw-tip">Void Ink · #1A1612</div></div>
+        <div class="sw" style="background:#C9A84C"><div class="sw-tip">Kinetic Gold · #C9A84C</div></div>
+        <div class="sw" style="background:#F0D980"><div class="sw-tip">Dawn Gold · #F0D980</div></div>
+        <div class="sw" style="background:#3D3020"><div class="sw-tip">Warm Dark · #3D3020</div></div>
+        <div class="sw" style="background:#E8E0D0"><div class="sw-tip">Bone · #E8E0D0</div></div>
+      </div>
+      <p class="ca-body">
+        The dominant tone is <strong>Void Ink</strong> — a near-black with a warm undertone 
+        that reads as black under direct light but reveals depth in shadow. 
+        This is not flat black. It is <strong>dimensional darkness</strong>.
+        <br><br>
+        <strong>Kinetic Gold</strong> appears only at the DRL strip, the BU4 badge inlay, 
+        the fork lower accents, and the seat thread colour. 
+        It is used with supreme restraint — 4% of total visible surface area. 
+        This ratio is non-negotiable. More gold = decorative. 
+        Less gold = invisible. <strong>4% is the exact threshold where gold becomes signal.</strong>
+        <br><br>
+        Variant 2: <strong>Dawn Gold</strong> colourway — the entire upper body in 
+        warm metallic gold, with Void Ink mechanicals. Loud version of the same system.
+      </p>
+    </div>
+    <div class="ca-item">
+      <div class="ca-label">Material Language</div>
+      <div class="ca-title">Tactile Honesty System</div>
+      <p class="ca-body">
+        <strong>Main Body Panels — Textured Matte ABS</strong><br>
+        A custom micro-texture applied to all major panels: 
+        not smooth, not rough — a precise 0.3mm surface grain 
+        that is warm to the touch and absorbs fingerprints. 
+        It reads as <em>intentionally crafted</em>, not cheaply moulded.
+        <br><br>
+        <strong>Tank Shroud — Brushed 6061 Aluminium Insert</strong><br>
+        A 180mm × 80mm aluminium plate inset into the tank shroud, 
+        brushed in a radial pattern that catches light like a sundial. 
+        Laser-etched with the BU4 bolt mark at 2mm depth. 
+        No paint. Natural metal as a luxury signal.
+        <br><br>
+        <strong>Battery Enclosure Lid — Carbon-Effect ABS</strong><br>
+        Mouldled in a genuine 2×2 twill carbon pattern — 
+        not a decal, not a film, but a structural material decision. 
+        The visibility of the battery unit is intentional. 
+        <strong>The power source is the design feature.</strong>
+        <br><br>
+        <strong>Fork Lowers — Gloss Black with Gold Pin-line</strong><br>
+        A single 1mm gold pin-line at the base of each fork lower. 
+        Visible only to the person beside the bike. 
+        The most subtle detail on the product.
+      </p>
+    </div>
+    <div class="ca-item">
+      <div class="ca-label">Finish + Digital CMF</div>
+      <div class="ca-title">Light Behaviour System</div>
+      <p class="ca-body">
+        <strong>Panel Finish — Dual-State Matte</strong><br>
+        Primary panels receive a "variable angle matte" — 
+        matte at perpendicular viewing, reveals a subtle metallic 
+        shimmer at 15–30° raking angles. 
+        In motion, the bike appears to shift between states — 
+        alive without being gaudy.
+        <br><br>
+        <strong>DRL System — The Gold Thread</strong><br>
+        The DRL strip is the most important surface on this bike at night. 
+        Kinetic Gold colour temperature (approximately 2700–3000K warm white, 
+        with a gold-tinted lens). At startup: the DRL fills from the 
+        bolt centre outward over 0.8 seconds, then holds. 
+        It should read at 200 metres in rain as a distinctive horizontal gold thread. 
+        <strong>The DRL is the brand's face at night. Design it accordingly.</strong>
+        <br><br>
+        <strong>Instrument Cluster UI</strong><br>
+        Jet-black AMOLED background. 
+        Gold accent only on the active element — current speed numeral. 
+        Typeface: custom extended Rajdhani-family sans with increased tracking. 
+        Battery indicator: a horizontal bar in warm gold. 
+        Boot screen: BU4 bolt charges from base to tip in gold, 
+        then the screen transitions to ride mode. 
+        Duration: exactly 3 seconds. <strong>3 seconds of brand language, daily.</strong>
+        <br><br>
+        <strong>Seat Upholstery</strong><br>
+        Black premium leatherette with gold thread stitch in 
+        the BU4 lightning bolt pattern. Tactile brand mark 
+        that the rider carries with them every time they ride.
+      </p>
+    </div>
+  </div>
+
+  <!-- COLOURWAYS -->
+  <div class="comm-grid">
+    <div class="cg-item">
+      <span class="cg-icon">◼</span>
+      <div class="cg-title">Void + Gold</div>
+      <p class="cg-body">
+        The hero colourway. <strong>Void Ink body with Kinetic Gold DRL and accents.</strong> 
+        The darkest possible presence with the most precise gold signal. 
+        This is the bike at its most restrained — and most powerful.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:#C9A84C">◆</span>
+      <div class="cg-title">Dawn Gold</div>
+      <p class="cg-body">
+        The loud colourway. <strong>Warm gold metallic body with Void Ink mechanicals.</strong> 
+        The inverse of the hero — gold dominant, dark recessive. 
+        For the customer who wants presence without apology.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:#888">◇</span>
+      <div class="cg-title">Titanium White</div>
+      <p class="cg-body">
+        The clean colourway. <strong>Bone white body, gold DRL, dark mechanicals.</strong> 
+        Appeals to a design-forward audience. 
+        Photographs exceptionally. The "gallery" version of the bike.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:var(--g)">⚡</span>
+      <div class="cg-title">Signature Green</div>
+      <p class="cg-body">
+        The brand-continuity colourway. <strong>BU4 Volt Green body, gold DRL, black mechanicals.</strong> 
+        The logo's green made physical. 
+        The most instantly brand-identifiable option at any distance.
+      </p>
+    </div>
+  </div>
+
+  <!-- COMMUNICATION FRAMEWORK -->
+  <div style="margin-top:1px">
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">Digital Communication System</div>
+      <div class="n-list">
+        <div class="nl-item">
+          <span class="nl-n">1</span>
+          <div class="nl-content">
+            <div class="nl-title">The Detail Series — Instagram / Reels</div>
+            <p class="nl-desc">A recurring content format: extreme macro photography of a single detail on the bike each week — the brushed aluminium plate, the gold fork pin-line, the seat stitch. No copy. No caption beyond the location of the detail. <strong>Teaches the audience to look closely. Rewards those who already do.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">2</span>
+          <div class="nl-content">
+            <div class="nl-title">The Arrival Films — YouTube</div>
+            <p class="nl-desc">60-second films. Single static camera. The BU4 enters frame at speed, the DRL thread visible first in the dark, then the whole machine passes. No voiceover. Music: a single, composed piece — not licensed, <strong>original score that becomes the brand's audio signature.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">3</span>
+          <div class="nl-content">
+            <div class="nl-title">No Product Spec Posts</div>
+            <p class="nl-desc">Never lead with numbers. The audience will find specifications. <strong>The brand communicates only in feeling, detail, and cultural positioning.</strong> Technical content lives exclusively in the product page — not in brand communications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Physical Touchpoints</div>
+      <div class="touchpoint-grid" style="border:none;background:transparent;gap:0">
+        <div class="tp-item" style="border-bottom:1px solid var(--rule);padding-left:0">
+          <span class="tp-num">01</span>
+          <div class="tp-content">
+            <div class="tp-title">Showroom Design</div>
+            <p class="tp-body">Not a dealership. <strong>A studio.</strong> Concrete floors. Single-source lighting. One bike on display at a time, on a rotating plinth. The purchase journey is appointment-based for the first year. Scarcity as premium signal.</p>
+          </div>
+        </div>
+        <div class="tp-item" style="padding-left:0">
+          <span class="tp-num">02</span>
+          <div class="tp-content">
+            <div class="tp-title">Packaging & Delivery</div>
+            <p class="tp-body">The owner's manual is printed on uncoated stock with gold foil on the cover. <strong>The key fob is solid aluminium with the bolt mark.</strong> Delivery includes a handwritten card from the production team. Objects that people keep.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- LAUNCH TIMELINE -->
+  <div class="tc-label accent" style="padding:3rem 0 2rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--s1-acc)">
+    ── LAUNCH ROADMAP · KINETIC GOLD ──
+  </div>
+  <div class="tl-track">
+    <div class="tl-item">
+      <div class="tl-phase">Phase 00 · 8 Weeks Pre-Launch</div>
+      <div class="tl-name">THE SIGNAL DROPS</div>
+      <p class="tl-desc">
+        Zero explanation. BU4 Auto's social accounts begin posting the Detail Series. 
+        Single extreme macro images of the bike — no context, no product name revealed. 
+        <strong>The DRL image first. Then the aluminium plate. Then the seat stitch.</strong> 
+        The community asks questions. BU4 does not answer. 
+        Curiosity is the only media buy needed.
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 01 · 4 Weeks Pre-Launch</div>
+      <div class="tl-name">THE NAME EMERGES</div>
+      <p class="tl-desc">
+        A single post: the full BU4 logo against the Void Ink colourway. 
+        No tagline. No copy. Just the brand mark and the bike's silhouette. 
+        Invite-only preview sessions in 4 cities: <strong>Mumbai, Delhi, Bengaluru, Hyderabad</strong>. 
+        Attendees selected from the Instagram audience — 
+        most engaged, not most followed. Community before celebrity.
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 02 · Launch Week</div>
+      <div class="tl-name">CHARGED SILENCE. ARRIVES.</div>
+      <p class="tl-desc">
+        The launch film releases at midnight. 90 seconds. 
+        <strong>Shot in 4 locations across India simultaneously</strong> — 
+        the same sequence, 4 different settings, intercut. 
+        The gold DRL thread in each city. 
+        No press conference. First media contact 
+        is through the film, not a product brief. 
+        Booking opens 48 hours after the film.
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 03 · 60 Days Post-Launch</div>
+      <div class="tl-name">THE OWNER SERIES</div>
+      <p class="tl-desc">
+        BU4 approaches the first 100 owners. 
+        Offers each of them a <strong>professional photography session</strong> with their bike — 
+        no charge, no content requirements. 
+        The resulting images are released as "Owner 001", "Owner 002"... 
+        Each owner becomes a protagonist. 
+        <strong>The brand is authored by its community.</strong>
+      </p>
+    </div>
+  </div>
+
+</div><!-- end str-body s1 -->
+</div><!-- end s1 -->
+
+
+<!-- ═══════════════════════════════════════
+   STRATEGY II: CURRENT STATE
+════════════════════════════════════════ -->
+<div id="s2" class="strategy s2" style="margin-top:2px">
+
+<div class="str-hero">
+  <div class="str-no">II</div>
+  <div class="str-hero-content">
+    <div class="str-tag">Brand Strategy · Option Two</div>
+    <div class="str-name">CURRENT<br><em>STATE</em></div>
+    <div class="str-line s2-line"></div>
+    <p class="str-philosophy">
+      "A live wire wrapped in design restraint. 
+      BU4 is not a product. It is an ongoing event — 
+      one that you either feel in real time, or you're already behind."
+    </p>
+  </div>
+</div>
+
+<div class="str-body">
+
+  <!-- CORE IDEA -->
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">The Central Idea</div>
+      <p class="narrative">
+        <strong>CURRENT STATE</strong> is built on a completely different strategic premise: 
+        while Kinetic Gold creates <em>timeless</em> brand language, 
+        Current State creates <em>live</em> brand language.
+        <br><br>
+        The insight: GenZ and younger Millennials don't just want a brand they admire — 
+        they want a brand that <strong>moves at their speed</strong>. 
+        That updates. That responds. That feels like a living entity, 
+        not a corporate monument. Supreme drops. Nike collaborates. 
+        Spotify wraps. <strong>The brand as ongoing experience, not fixed identity.</strong>
+        <br><br>
+        Current State plays this truth in two keys simultaneously:<br>
+        <strong>Loud</strong> — the visual language is electric, kinetic, almost uncomfortable. 
+        High-voltage cyan. Sharp diagonals. Typography that leans forward like it's moving.<br>
+        <strong>Subtle</strong> — beneath this visual energy is an extraordinary system of 
+        <em>restraint and information density</em>. 
+        Every piece of communication rewards reading. 
+        The bike itself has surfaces that require close examination. 
+        The louder the brand is at first glance, 
+        the more it rewards the second.
+        <br><br>
+        This is a brand that GenZ will photograph on the first day 
+        and still be discovering details about on the 300th day.
+      </p>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Pillars</div>
+      <div class="pillar">
+        <div class="p-title">01 — Live Energy</div>
+        <p class="p-body">
+          The brand communicates like a live performance, not a finished record. 
+          <strong>It is always in the middle of something.</strong> 
+          Campaigns don't end — they evolve. 
+          The bike's colourways are released in "drops," not catalogues. 
+          Limited editions come and go. The community is always in the loop. 
+          Always in the current.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">02 — Technical Poetry</div>
+        <p class="p-body">
+          The electric technology of this bike is not just a feature — 
+          it is the brand's primary creative vocabulary. 
+          <strong>Circuits become patterns. Voltage becomes colour. 
+          Battery capacity becomes a personality scale.</strong> 
+          Every technical truth about the machine is 
+          translated into a cultural and aesthetic expression.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">03 — The Digital-Physical Blur</div>
+        <p class="p-body">
+          This bike lives in two worlds simultaneously — 
+          the physical road and the digital feed. 
+          <strong>The brand is designed to be equally compelling in both.</strong> 
+          The CMF system is built with photography in mind. 
+          The DRL pattern is designed to be recognisable in vertical video format. 
+          Physical decisions made with digital consequences understood.
+        </p>
+      </div>
+      <div class="pillar">
+        <div class="p-title">04 — Radical Transparency</div>
+        <p class="p-body">
+          This brand shows its working. The battery architecture is visible. 
+          The brand shares its design process. 
+          <strong>BU4 under Current State does not have secrets — 
+          it has ongoing stories.</strong> 
+          The journey from concept to road is 
+          part of the brand's content universe.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHETYPE + VOICE -->
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Archetype</div>
+      <div class="archetype-visual">
+        <div class="arc-ring">Mg</div>
+        <div class="arc-text">
+          <div class="arc-name">THE MAGICIAN × THE OUTLAW</div>
+          <p class="arc-desc">
+            The Magician transforms reality and makes the impossible feel inevitable. 
+            The Outlaw disrupts and rewrites rules. 
+            Together: a brand that makes audiences feel 
+            like they're witnessing a revolution in real time — 
+            and they're <strong style="color:var(--ink)">part of its energy, not just observers of it</strong>.
+          </p>
+        </div>
+      </div>
+      <div class="tc-label accent" style="margin-top:1.5rem">Voice Spectrum</div>
+      <div class="voice-spectrum">
+        <div class="vs-row">
+          <span class="vs-pole">Passive</span>
+          <div class="vs-track"><div class="vs-fill" style="width:85%"></div></div>
+          <span class="vs-pole right">Active</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Static</span>
+          <div class="vs-track"><div class="vs-fill" style="width:90%"></div></div>
+          <span class="vs-pole right">Live/Current</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Timeless</span>
+          <div class="vs-track"><div class="vs-fill" style="width:35%"></div></div>
+          <span class="vs-pole right">Zeitgeist</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Minimal</span>
+          <div class="vs-track"><div class="vs-fill" style="width:60%"></div></div>
+          <span class="vs-pole right">Dense</span>
+        </div>
+        <div class="vs-row">
+          <span class="vs-pole">Exclusive</span>
+          <div class="vs-track"><div class="vs-fill" style="width:45%"></div></div>
+          <span class="vs-pole right">Inclusive</span>
+        </div>
+      </div>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Brand Voice — Rules</div>
+      <div class="n-list">
+        <div class="nl-item">
+          <span class="nl-n">1</span>
+          <div class="nl-content">
+            <div class="nl-title">Present Tense. Always.</div>
+            <p class="nl-desc">Every piece of communication is in the present. "BU4 is charging." "The current is live." "You're moving now." <strong>Past tense is for brands that have already happened. BU4 is always in the act of happening.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">2</span>
+          <div class="nl-content">
+            <div class="nl-title">The Second Layer</div>
+            <p class="nl-desc">Every communication has a visible layer and a reward layer. The first is immediate. The second requires attention. A social post that seems simple reveals a technical specification embedded in the visual. <strong>The brand is always hiding something worth finding.</strong></p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">3</span>
+          <div class="nl-content">
+            <div class="nl-title">Drop Culture, Not Campaign Culture</div>
+            <p class="nl-desc">No annual product reveals. No scheduled campaigns. Instead, <strong>irregular drops — new colourways, new content, new community moments — released without announcement.</strong> The audience learns to watch constantly. Attention maintained through unpredictability.</p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">4</span>
+          <div class="nl-content">
+            <div class="nl-title">Technical is Beautiful</div>
+            <p class="nl-desc">Never hide or simplify the engineering. <strong>Voltage curves, torque graphs, motor diagrams — these are presented as art objects.</strong> The audience is smart enough to find beauty in function. Trust them to.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAGLINES S2 -->
+  <div class="two-col">
+    <div class="tc-panel" style="grid-column:1/-1">
+      <div class="tc-label accent">Campaign Taglines — The Current State Register</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)">
+
+        <div class="tagline-block" style="background:#00060d20">
+          <span class="tb-num">MASTER TAGLINE</span>
+          <div class="tb-line">THE CURRENT IS NOW.</div>
+          <p class="tb-sub">A double meaning: electrical current and temporal current. 
+          Both always true. Both always present. 
+          The brand that exists entirely in the present tense 
+          creates permanent urgency without expiry date.</p>
+          <div class="tb-mechanic">APPLICATION → Brand identity anchor, all primary communications</div>
+        </div>
+
+        <div class="tagline-block" style="background:#00060d20">
+          <span class="tb-num">PRODUCT REVEAL</span>
+          <div class="tb-line">NOTHING BETWEEN YOU AND THE ROAD.</div>
+          <p class="tb-sub">References the naked bike architecture — no fairing, 
+          no hiding. Also a philosophical statement about electric: 
+          no combustion noise, no vibration barrier, 
+          pure connection. Loud thought. Subtle delivery.</p>
+          <div class="tb-mechanic">APPLICATION → Product page, launch film, print</div>
+        </div>
+
+        <div class="tagline-block" style="background:#00060d20">
+          <span class="tb-num">PERFORMANCE LINE</span>
+          <div class="tb-line">INSTANT. TOTAL. YOURS.</div>
+          <p class="tb-sub">Three words. Three entire electric torque delivery truths: 
+          instant torque, total control, personal ownership. 
+          Grammatically fragmented — reads like electricity. 
+          The loudest possible subtlety.</p>
+          <div class="tb-mechanic">APPLICATION → Performance specs page, video end-card, OOH</div>
+        </div>
+
+        <div class="tagline-block" style="background:#00060d20">
+          <span class="tb-num">COMMUNITY DROP</span>
+          <div class="tb-line">ALREADY RUNNING.</div>
+          <p class="tb-sub">For owner community communications. 
+          The brand never stops — and neither do you. 
+          Creates a shared identity of motion. 
+          Two words that contain an entire brand philosophy.</p>
+          <div class="tb-mechanic">APPLICATION → Owner portal, community content, merchandise</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CMF S2 -->
+  <div class="tc-label accent" style="padding:2rem 0 1rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--s2-acc)">
+    ── CMF SYSTEM · CURRENT STATE APPLICATION TO THE BU4 BIKE ──
+  </div>
+
+  <div class="cmf-app">
+    <div class="ca-item">
+      <div class="ca-label">Colour System</div>
+      <div class="ca-title">Live Voltage Palette</div>
+      <div class="swatch-row">
+        <div class="sw" style="background:#020a12"><div class="sw-tip">Deep Circuit · #020A12</div></div>
+        <div class="sw" style="background:#00BFFF;box-shadow:0 0 10px rgba(0,191,255,0.4)"><div class="sw-tip">Live Current · #00BFFF</div></div>
+        <div class="sw" style="background:#003A5C"><div class="sw-tip">Charged Deep · #003A5C</div></div>
+        <div class="sw" style="background:#88D4F5"><div class="sw-tip">Arc Blue · #88D4F5</div></div>
+        <div class="sw" style="background:#E8F8FF"><div class="sw-tip">Overload White · #E8F8FF</div></div>
+      </div>
+      <p class="ca-body">
+        The hero colourway is <strong>Deep Circuit</strong> — 
+        a near-black that is unmistakably blue-coded. 
+        Not navy, not black — something between, 
+        like the colour of a night sky right before a storm. 
+        Under direct studio light it reads as black. 
+        Under natural light, the deep blue reveals itself.
+        <br><br>
+        <strong>Live Current (#00BFFF)</strong> is the signal colour — 
+        used even more sparingly than the gold in Strategy I, 
+        but deployed with higher visual impact. 
+        It is the DRL colour. It is the instrument cluster accent. 
+        It is the lanyard on the key fob. 
+        It appears in exactly four places on the bike. 
+        <strong>The audience learns these four places 
+        like a visual password.</strong>
+        <br><br>
+        The "drop" system releases limited colourways quarterly: 
+        a Charged Deep colourway (deep blue, no accent), 
+        an Arc Blue colourway (the reverse — light blue dominant), 
+        and the flagship Overload White (white with Live Current accents). 
+        <strong>Each drop is a cultural moment, not a product update.</strong>
+      </p>
+    </div>
+    <div class="ca-item">
+      <div class="ca-label">Material Language</div>
+      <div class="ca-title">The Circuit Surface System</div>
+      <p class="ca-body">
+        <strong>Main Body Panels — Circuit-Embossed High-Gloss ABS</strong><br>
+        The primary panels are <em>not</em> matte. They are high-gloss — 
+        but with a twist: the surface carries an embossed micro-circuit pattern 
+        at 0.5mm depth, visible as texture under raking light. 
+        The pattern is a genuine electrical circuit diagram 
+        of the BU4 motor's control board, abstracted. 
+        <strong>The loudest panel finish imaginable, hiding the most intimate detail.</strong>
+        <br><br>
+        <strong>Battery Enclosure — Anodised Aluminium Structural Panel</strong><br>
+        Unlike Strategy I's carbon, here the battery enclosure lid is 
+        anodised aluminium in the Live Current colour — 
+        the only panel that matches the DRL. 
+        Communicates: <em>the power source is the brand colour. 
+        They are the same thing.</em>
+        <br><br>
+        <strong>Fork Lowers — Shot-Blasted Steel, Raw Clearcoat</strong><br>
+        The fork lowers are shot-blasted for a matte, 
+        almost rough-industrial texture, then clear-coated. 
+        Zero decorative finish. The contrast with the gloss body panels 
+        is the design decision — machine rawness against designed precision.
+        <br><br>
+        <strong>Wheel Rims — Gloss Deep Circuit with Machined Face</strong><br>
+        Gloss-black rims with machined spoke faces — 
+        creates a stroboscopic flash of silver in motion. 
+        At standstill: invisible. In motion: electric.
+      </p>
+    </div>
+    <div class="ca-item">
+      <div class="ca-label">Finish + Digital CMF</div>
+      <div class="ca-title">The Voltage Behaviour System</div>
+      <p class="ca-body">
+        <strong>Panel Finish — Glossy Circuit Surface</strong><br>
+        High-gloss for maximum light interaction with the circuit emboss. 
+        The finish is polarising by design — 
+        some will find it too much, but those who understand the circuit detail 
+        will be obsessed. The gloss is the "loud." The circuit is the "subtle."
+        <br><br>
+        <strong>DRL System — The Live Wire</strong><br>
+        Live Current blue-white DRL strip. 
+        Unlike the Kinetic Gold warm fill, this DRL performs 
+        a different sequence: on startup, it pulses once — 
+        a single flash from dead to full intensity in 0.3 seconds — 
+        then holds at 60% brightness, pulsing very slowly 
+        (like a resting heartbeat: 0.8Hz) until throttle is applied, 
+        whereupon it snaps to 100% and holds. 
+        <strong>The DRL is alive. It breathes. It responds.</strong>
+        <br><br>
+        <strong>Instrument Cluster UI — The Current Dashboard</strong><br>
+        The instrument cluster is the most developed touchpoint in this strategy. 
+        Full AMOLED. The background is an animated live voltage waveform — 
+        subtle, dark, almost invisible, but real-time. 
+        Speed in a bold extended sans, large. 
+        Battery shown as a waveform, not a bar. 
+        Ride modes named not "Eco/Normal/Sport" but 
+        <strong>"Current / Surge / Overload."</strong>
+        The UI is a product in itself — worthy of its own press coverage.
+        <br><br>
+        <strong>Seat — Technical Fabric Insert</strong><br>
+        A mesh-tech insert at the seat centre — 
+        the circuit pattern now in relief on the fabric. 
+        Cooling perforations in the same layout. 
+        Rider feels the pattern before they see it.
+      </p>
+    </div>
+  </div>
+
+  <!-- COLOURWAYS S2 -->
+  <div class="comm-grid">
+    <div class="cg-item">
+      <span class="cg-icon" style="color:var(--s2-acc)">◼</span>
+      <div class="cg-title">Deep Circuit</div>
+      <p class="cg-body">
+        The launch hero. <strong>Near-black blue body, Live Current DRL and battery panel accent.</strong> 
+        The dark presence with the electric signal. 
+        The bike that looks like it was designed inside a server room.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:#88D4F5">◆</span>
+      <div class="cg-title">Arc Blue Drop</div>
+      <p class="cg-body">
+        First quarterly drop. <strong>Mid-blue metallic body, dark mechanicals.</strong> 
+        Loud colourway that rewards community members 
+        who've been paying attention. Drop-only. 
+        300 units maximum.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:#E8F8FF">◇</span>
+      <div class="cg-title">Overload White</div>
+      <p class="cg-body">
+        Second drop. <strong>White body, all accent points in Live Current blue.</strong> 
+        The circuit emboss most visible on this colourway — 
+        white surface, raking light, infinite detail. 
+        The photographer's bike.
+      </p>
+    </div>
+    <div class="cg-item">
+      <span class="cg-icon" style="color:#003A5C">▪</span>
+      <div class="cg-title">Stealth Surge</div>
+      <p class="cg-body">
+        Year 1 halo edition. <strong>All-over Deep Circuit with no visible Live Current — 
+        only the DRL as signal.</strong> 
+        The most minimal of all colourways. 
+        The one where you have to know to appreciate. 
+        Zero vs. complete.
+      </p>
+    </div>
+  </div>
+
+  <!-- DIGITAL COMMS S2 -->
+  <div style="margin-top:1px">
+  <div class="two-col">
+    <div class="tc-panel">
+      <div class="tc-label accent">The Drop System — Content Architecture</div>
+      <div class="n-list">
+        <div class="nl-item">
+          <span class="nl-n">1</span>
+          <div class="nl-content">
+            <div class="nl-title">The Circuit Posts</div>
+            <p class="nl-desc">A content series: extreme close-up of the circuit emboss pattern on the body panel. The caption is a genuine electrical fact about the bike's motor. <strong>"17,000 rpm. No gearbox. No hesitation."</strong> The visual is art. The copy is engineering. The combination is brand.</p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">2</span>
+          <div class="nl-content">
+            <div class="nl-title">Live Drop Announcements</div>
+            <p class="nl-desc">New colourway drops announced 3 hours in advance — only on the BU4 community app/Discord equivalent. <strong>The audience that is paying the most attention gets the first access.</strong> Converts brand engagement into competitive advantage.</p>
+          </div>
+        </div>
+        <div class="nl-item">
+          <span class="nl-n">3</span>
+          <div class="nl-content">
+            <div class="nl-title">The Waveform Series — Reels</div>
+            <p class="nl-desc">Short Reels built around sound design: the startup chime, the tyre on wet road, the DRL buzz. <strong>Make the absence of engine noise the most interesting sound in the room.</strong> GenZ has been doing this for ASMR for years — BU4 turns it into a brand language.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tc-panel">
+      <div class="tc-label accent">Physical Touchpoints</div>
+      <div class="touchpoint-grid" style="border:none;background:transparent;gap:0">
+        <div class="tp-item" style="border-bottom:1px solid var(--rule);padding-left:0">
+          <span class="tp-num" style="color:rgba(0,191,255,0.15)">01</span>
+          <div class="tp-content">
+            <div class="tp-title">The Experience Zone</div>
+            <p class="tp-body">Not a showroom — an <strong>"Experience Zone."</strong> Modular, pop-up capable. The live Current blue DRL strip appears in the ceiling. The floor is a circuit pattern. The bike sits in the centre. First in metro malls, then in Tier-2 city tech parks. <strong>The brand goes to the community.</strong></p>
+          </div>
+        </div>
+        <div class="tp-item" style="padding-left:0">
+          <span class="tp-num" style="color:rgba(0,191,255,0.1)">02</span>
+          <div class="tp-content">
+            <div class="tp-title">The BU4 App</div>
+            <p class="tp-body">The instrument cluster UI becomes the brand's digital world. <strong>A companion app with live telemetry, drop notifications, community feed, and the voltage waveform animation as its home screen.</strong> The brand lives in the pocket as much as the street.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- LAUNCH TIMELINE S2 -->
+  <div class="tc-label accent" style="padding:3rem 0 2rem;font-family:'JetBrains Mono',monospace;font-size:0.55rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--s2-acc)">
+    ── LAUNCH ROADMAP · CURRENT STATE ──
+  </div>
+  <div class="tl-track">
+    <div class="tl-item">
+      <div class="tl-phase">Phase 00 · 10 Weeks Pre-Launch</div>
+      <div class="tl-name">THE SIGNAL IS LIVE</div>
+      <p class="tl-desc">
+        The BU4 social presence activates — not with product content, 
+        but with <strong>the waveform. Pure visual static, voltage diagrams, 
+        circuit art.</strong> No bike. No logo yet. 
+        Just the visual language of electricity as aesthetic. 
+        The account gains an audience that already understands 
+        the brand language before the brand is named.
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 01 · 3 Weeks Pre-Launch</div>
+      <div class="tl-name">VOLTAGE IDENTIFIED</div>
+      <p class="tl-desc">
+        The BU4 bolt appears — first as the DRL in complete darkness. 
+        Then the brand name. Then the single word: <strong>"CURRENT STATE."</strong> 
+        A waiting list opens. No product price shown. 
+        The audience that has been following commits on name alone. 
+        This is the most accurate quality filter for true community members.
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 02 · Launch</div>
+      <div class="tl-name">THE CURRENT IS NOW.</div>
+      <p class="tl-desc">
+        The launch event is simultaneously physical and digital. 
+        Physical: <strong>10 cities, popup Experience Zones activated at exactly the same moment.</strong> 
+        Digital: a live stream from each city, cut together in real time. 
+        The audience picks their city. 
+        The bike reveals at midnight in every time zone. 
+        <strong>The live Current DRL in 10 locations simultaneously 
+        is the campaign image.</strong>
+      </p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-phase">Phase 03 · First Drop, 60 Days</div>
+      <div class="tl-name">ARC BLUE DROPS</div>
+      <p class="tl-desc">
+        300 units of the Arc Blue colourway. 
+        Announced 3 hours in advance on the community platform only. 
+        <strong>Sells out in under 2 hours. 
+        This is not a product update — it is a cultural event.</strong> 
+        Every person who missed the drop tells someone about it. 
+        FOMO is the media budget.
+      </p>
+    </div>
+  </div>
+
+</div><!-- end str-body s2 -->
+</div><!-- end s2 -->
+
+
+<!-- ═══════════════════════════════════════
+   COMPARISON + RECOMMENDATION
+════════════════════════════════════════ -->
+<div id="rec">
+<div class="chapter">
+  <div class="ch-label">Strategic Comparison</div>
+  <h2 class="ch-title">Side by <em>Side.</em></h2>
+  <p class="ch-intro">
+    Both strategies honour the loud/subtle brief. Both are built on the same product. 
+    They differ in their relationship with time, audience depth, and brand ambition.
+  </p>
+</div>
+
+<div class="compare">
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th class="h-dim">DIMENSION</th>
+        <th class="h-s1">KINETIC GOLD</th>
+        <th class="h-s2">CURRENT STATE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="cat">Brand Longevity</td>
+        <td><strong>Timeless.</strong> Built to age like Leica or Muji — the identity does not expire. Works as well in 2035 as 2025.</td>
+        <td><strong>Zeitgeist-native.</strong> Built for perpetual relevance through constant evolution. Requires ongoing brand management investment.</td>
+      </tr>
+      <tr>
+        <td class="cat">Loud Mechanism</td>
+        <td>The gold CMF and silhouette. Unavoidable at distance. Recognisable without context.</td>
+        <td>The circuit surface and Live Current blue. Kinetic, electric, stops the scroll.</td>
+      </tr>
+      <tr>
+        <td class="cat">Subtle Mechanism</td>
+        <td>The brushed aluminium plate, fork pin-line, seat stitch, gold at 4% surface area. Depth reveals slowly.</td>
+        <td>The circuit emboss on every panel, the breathing DRL, the voltage UI. Rewards examination obsessively.</td>
+      </tr>
+      <tr>
+        <td class="cat">Target Sweet Spot</td>
+        <td>25–32 year olds. Design-literate. Metro and Tier-1. The considered buyer who wants the smartest decision in the room.</td>
+        <td>20–28 year olds. Digitally native. Pan-India. The culturally active buyer who wants to be part of a living thing.</td>
+      </tr>
+      <tr>
+        <td class="cat">Competitor It Disrupts</td>
+        <td>Ather's rational premium positioning — Kinetic Gold out-emotions them. Royal Enfield's heritage appeal — Gold out-aesthetics them.</td>
+        <td>Ola Electric's noise without depth — Current State out-cultures them. KTM's European performance cool — Current State out-Indias them.</td>
+      </tr>
+      <tr>
+        <td class="cat">CMF Hero Colourway</td>
+        <td>Void Ink + Kinetic Gold DRL. Near-black, gold signal, maximum restraint.</td>
+        <td>Deep Circuit + Live Current DRL. Near-black blue, electric blue signal, kinetic tension.</td>
+      </tr>
+      <tr>
+        <td class="cat">Community Model</td>
+        <td>Curated. Owner portraits. Selective preview access. The brand chooses its community members early.</td>
+        <td>Drop-based. App-native. Live events. The community self-selects by engagement level.</td>
+      </tr>
+      <tr>
+        <td class="cat">Risk Profile</td>
+        <td><strong>Lower execution risk.</strong> Timeless strategies are more forgiving. Higher positioning risk — premium perception must be earned.</td>
+        <td><strong>Higher execution risk.</strong> Drop culture requires discipline and speed. Lower positioning risk — GenZ community is more forgiving of imperfection if the energy is right.</td>
+      </tr>
+      <tr>
+        <td class="cat">The One Thing They'll Remember</td>
+        <td>"The gold DRL bike. The one that looked like it cost more than it did."</td>
+        <td>"The BU4 drop. I almost got the Arc Blue but missed it. Still regret it."</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RECOMMENDATION -->
+<div class="rec">
+  <div class="rec-inner">
+    <div class="rec-label">The Strategic Recommendation</div>
+    <h2 class="rec-title">The Answer Is<br><em>Both.</em><br>Used Differently.</h2>
+    <p class="rec-body">
+      The most powerful strategic move for BU4 is not to choose between these identities — 
+      it is to <strong>sequence them</strong>. 
+      <br><br>
+      <strong>Launch with Current State.</strong> 
+      The drop-native, digitally kinetic, culturally live energy of Current State 
+      is the correct frequency for a brand entering a market cold. 
+      It builds community velocity, creates cultural events, 
+      and gives BU4 the engagement flywheel it needs to establish presence. 
+      The Live Current CMF is the most visually differentiated 
+      of any Indian EV brand in market today. 
+      It gets BU4 talked about immediately.
+      <br><br>
+      <strong>Introduce Kinetic Gold at 6 months as the premium tier.</strong> 
+      Once the base is established, the Kinetic Gold colourway and its 
+      associated brand story enters as the flagship — 
+      positioning BU4 as a brand with both cultural energy 
+      and design permanence. 
+      The two systems become a portfolio: 
+      Current State speaks to the community. 
+      Kinetic Gold speaks to the connoisseur.
+      <br><br>
+      Together, they create what almost no brand achieves: 
+      <strong>a brand that is simultaneously everywhere and rare.</strong>
+    </p>
+    <div class="rec-formula">
+      <div class="rf-item rf-2">CURRENT STATE</div>
+      <div class="rf-plus">→ LAUNCH →</div>
+      <div class="rf-item rf-1">KINETIC GOLD</div>
+      <div class="rf-plus">= </div>
+      <div class="rf-item" style="color:var(--g)">BU4 UNIVERSE</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div style="max-width:1400px;margin:0 auto">
+<footer>
+  <div class="ft-logo">BU<span>4</span>AUTO</div>
+  <div class="ft-copy">
+    Brand Strategy Document · India Launch 2025<br>
+    Two strategies. One brand. Unlimited current.<br>
+    Confidential — Strategic Use Only
+  </div>
+</footer>
+</div>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX - 4 + 'px';
+  cursor.style.top = e.clientY - 4 + 'px';
+});
+document.addEventListener('mousedown', () => cursor.style.transform = 'scale(3)');
+document.addEventListener('mouseup', () => cursor.style.transform = 'scale(1)');
+</script>
+</body>
+</html>
